@@ -46,8 +46,7 @@ const hasCycle = head => {
 
 // 3. 快慢指针
 const hasCycle = head => {
-  let fast = slow = new ListNode()
-  fast.next = head
+  let fast = slow = head
   if(fast.next == null || fast.next.next == null) 
     return false
   while(fast && fast.next) {

@@ -50,3 +50,36 @@ const levelOrder = root => {
   }
   return res
 }
+
+
+const levelOrder = root => {
+    if(!root) return []
+    const q = [[root, 0]]
+    const res = []
+    while(q.length){
+        const [n, l] = q.shift()
+        if(!res[l]) res.push([n.val])
+        else res[l].push(n.val)
+        if(n.left) q.push([n.left, l+1])
+        if(n.right) q.push([n.right, l+1])
+    }
+    return res
+}
+
+
+const levelOrder = root => {
+    if(!root) return []
+    const q = [root]
+    const res = []
+    while(q.length){
+        res.push([])
+        let len = q.length
+        while(len--){
+            const n = q.shift()
+            res[res.length - 1].push(n.val)
+            if(n.left) q.push(n.left)
+            if(n.right) q.push(n.right)
+        }
+    }
+    return res
+}

@@ -18,8 +18,7 @@
  * @return {boolean}
  */
 const isPalindrome = head => {
-  let dummyHead = slow = fast = new ListNode()
-  dummyHead.next = head
+  let dummyHead = slow = fast = head
   // 寻找链表中点
   while(fast && fast.next) {
     [slow, fast] = [slow.next, fast.next.next]
@@ -29,7 +28,7 @@ const isPalindrome = head => {
   let newStart = reverse(null, next)
   // 循环，判断节点是否一样
   for(let p = head, newP = newStart; newP != null; p = p.next, newP = newP.next) {
-    if(p.val != newP.val) return false
+    if(p.val !== newP.val) return false
   }
   return true
 }
@@ -39,4 +38,22 @@ const reverse = (pre, cur) => {
   const next = cur.next
   cur.next = pre
   return reverse(cur, next)
+}
+
+
+const isPalindrome = head => {
+  const arr = []
+  let p = head
+  while (p) {
+    arr.push(p.val)
+    p = p.next
+  }
+  let start = 0
+  let end = arr.length - 1
+  while (start <= end) {
+    if (arr[start] !== arr[end]) return false
+    start++
+    end-- 
+  }
+  return true
 }
